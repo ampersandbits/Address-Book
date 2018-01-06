@@ -33,13 +33,25 @@ app.post("/",function(req,res){
 });
   
 app.get("/contact/:id", function(req,res){
-    contacts.find(contacts.id, function(err,contacts){
+
+    contact1 = contacts.filter(
+        function(contacts){ return contacts.id == req.params.id }
+    );
+    //console.log(contact);
+    if(contact1.length >0){
+        res.render("show",{contact:contact1[0]});
+    }
+    else{
+        console.log("Error");
+    }
+    /*contacts.find(contacts, function(err,contacts){
         if(err){
             console.log(err);
         } else{
             res.render("show",{contact:contacts});
         }
-    })  
+    })*/ 
+    //console.log(req.params.id); 
 });
 app.get("*", function(req,res){
     res.send("Page Error");
