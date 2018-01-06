@@ -1,0 +1,16 @@
+<% include partials/header %>
+<div class="container">
+        <header class="jumbotron">
+                <h1>Contacts</h1>
+        </header>
+        <a class="btn btn-primary btn-large float-right" href="/new">Add new Contact</a>
+        <% contacts.forEach(function(contact){ %>
+         <div>
+            <h4>
+                <a href="/contact/<%= contact._id %>" class="btn btn-info btn-large border-0 rounded"><%= contact.firstname %> <%= contact.lastname %></a>
+            </h4>
+         </div>
+         
+        <%  }) %>
+</div>
+<% include partials/footer %>
