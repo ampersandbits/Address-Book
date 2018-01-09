@@ -53,6 +53,18 @@ app.get("/contact/:id", function(req,res){
     })*/ 
     //console.log(req.params.id); 
 });
+// Edit
+app.get("/contact/:id/edit", function(req,res){
+    contact1 = contacts.filter(
+        function(contacts){ return contacts.id == req.params.id}
+    );
+    if(contact1.length >0){
+        res.render("edit",{contact:contact1[0]});
+    } else{
+        res.redirect("/");
+    }
+});
+
 app.get("*", function(req,res){
     res.send("Page Error");
 });
